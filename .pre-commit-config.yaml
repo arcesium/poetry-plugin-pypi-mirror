@@ -1,0 +1,44 @@
+repos:
+  - repo: local
+    # Defining as local hooks to permit reuse of already-installed dev
+    # dependencies
+    hooks:
+      - id: isort
+        name: isort
+        entry: poetry run isort
+        language: system
+        require_serial: true
+        types_or: [cython, pyi, python]
+        args: ["--filter-files", "--check-only"]
+      - id: black
+        name: black
+        entry: poetry run black
+        language: system
+        require_serial: true
+        args: ["--check"]
+        types_or: [python, pyi]
+      - id: mypy
+        name: mypy
+        entry: poetry run mypy
+        language: system
+        require_serial: true
+        types_or: [python, pyi]
+        args: ["--scripts-are-modules", "--namespace-packages"]
+      - id: flake8
+        name: flake8
+        entry: poetry run flake8
+        language: system
+        require_serial: true
+        types: [python]
+      - id: bandit
+        name: bandit
+        entry: poetry run bandit
+        language: system
+        types: [python]
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.0.1
+    hooks:
+      - id: trailing-whitespace
+      - id: check-json
+      - id: check-toml

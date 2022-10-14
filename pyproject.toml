@@ -1,0 +1,43 @@
+[tool.poetry]
+name = "poetry-plugin-pypi-mirror"
+version = "0.1.0"
+description = "Poetry plugin that adds support for pypi.org mirrors and pull-through caches"
+authors = ["Jacob Henner <code@ventricle.us>"]
+license = "BSD-3-Clause"
+keywords = ["packaging", "poetry", "pypi"]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+poetry = "^1.2.1"
+
+[tool.poetry.plugins."poetry.plugin"]
+demo = "poetry_plugin_pypi_mirror.plugins:PyPIMirrorPlugin"
+
+[tool.poetry.group.dev.dependencies]
+black = "^22.10.0"
+mypy = "^0.982"
+bandit = "^1.7.4"
+isort = "^5.10.1"
+flake8 = "^3.9.2"
+pre-commit = "^2.20.0"
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+src_paths = ["src/poetry_plugin_pypi_mirror", "tests"]
+
+[tool.pylint.messages_control]
+disable = "C0330, C0326"
+
+[tool.pylint.format]
+max-line-length = "88"
+
+[[tool.mypy.overrides]]
+module = [
+  'cleo.*',
+]
+ignore_missing_imports = true
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
