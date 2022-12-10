@@ -27,10 +27,11 @@ class PyPIMirrorPlugin(Plugin):
     def activate(self, poetry: Poetry, io: IO):
 
         # Environment var overrides poetry configuration
-        pypi_mirror_url = os.environ.get("POETRY_PYPI_MIRROR_URL")
-        pypi_mirror_url = pypi_mirror_url or poetry.config.get("plugins", {}).get(
-            "pypi_mirror", {}
-        ).get("url")
+        pypi_mirror_url_env = os.environ.get("POETRY_PYPI_MIRROR_URL")
+        pypi_mirror_url_config = [ (name, details['url']) for name, details in poetry.config.\
+            get("plugins", {}). \
+            get("pypi_mirror", {}).values() ]
+        pypi_mirror_url = pypi_mirror_url_env or pypi_mirror_url_config
 
         if not pypi_mirror_url:
             return
@@ -47,7 +48,7 @@ class PyPIMirrorPlugin(Plugin):
 
         replacement_repository = SourceStrippedLegacyRepository(
             DEFAULT_REPO_NAME,
-            pypi_mirror_url,
+            pypi_mirror_url[0],
             config=poetry.config,
             disable_cache=pypi_prioritized_repository.repository._disable_cache,
         )
@@ -60,6 +61,19 @@ class PyPIMirrorPlugin(Plugin):
             default=priority == Priority.DEFAULT,
             secondary=priority == Priority.SECONDARY,
         )
+
+        for name, url in pypi_mirror_url[1:]:
+            repo = SourceStrippedLegacyRepository(
+                        name,
+                        url,
+                        config=poetry.config,
+                        disable_cache=pypi_prioritized_repository.repository._disable_cache,
+                    )   
+            poetry.pool.add_repository(
+                repository=repo,
+                default=False,
+                secondary=True,
+            )
 
 
 class SourceStrippedLegacyRepository(LegacyRepository):
