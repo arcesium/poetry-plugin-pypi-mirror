@@ -62,6 +62,17 @@ poetry add cleo # uses mirror specified in first line
 poetry lock     # also uses mirror specified in first line
 ```
 
+## Compatibility
+
+*poetry-plugin-pypi-mirror* depends on poetry internals which can change between
+poetry releases. It's important to ensure compatibility between the poetry
+version in use and the plugin version in use.
+
+| Poetry version(s) | Compatible plugin version(s) |
+|-------------------|------------------------------|
+| ~1.3.0            | ^0.3.0                       |
+| ~1.2.1            | < 0.3.0                      |
+
 ## See also
 
 * [python-poetry/poetry#1632](https://github.com/python-poetry/poetry/issues/1632) - poetry feature request to add support for global repository URL replacement
