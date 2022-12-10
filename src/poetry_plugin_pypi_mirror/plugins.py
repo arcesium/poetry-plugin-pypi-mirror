@@ -27,7 +27,7 @@ class PyPIMirrorPlugin(Plugin):
     def activate(self, poetry: Poetry, io: IO):
 
         # Environment var overrides poetry configuration
-        pypi_mirror_url_env = os.environ.get("POETRY_PYPI_MIRROR_URL")
+        pypi_mirror_url_env = [os.environ.get("POETRY_PYPI_MIRROR_URL")]
         pypi_mirror_url_config = [ (name, details['url']) for name, details in poetry.config.\
             get("plugins", {}). \
             get("pypi_mirror", {}).values() ]
