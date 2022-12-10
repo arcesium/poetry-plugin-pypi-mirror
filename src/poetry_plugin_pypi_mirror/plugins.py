@@ -23,7 +23,12 @@ class PyPIMirrorPlugin(Plugin):
     # through standards compliance we replace the pypi.org PyPiRepository with a
     # (modified) LegacyRepository - which uses the PEP 503 API.
     def activate(self, poetry: Poetry, io: IO):
+
+        # Environment var overrides poetry configuration
         pypi_mirror_url = os.environ.get("POETRY_PYPI_MIRROR_URL")
+        pypi_mirror_url = pypi_mirror_url or poetry.config.get("plugins", {}).get(
+            "pypi_mirror", {}
+        ).get("url")
 
         if not pypi_mirror_url:
             return

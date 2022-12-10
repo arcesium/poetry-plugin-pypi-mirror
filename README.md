@@ -32,10 +32,24 @@ Follow poetry's [plugin installation instructions](https://python-poetry.org/doc
 
 ### Specifying a mirror
 
-To specify a mirror, set environment variable `POETRY_PYPI_MIRROR_URL` to the
-full URL for a [PEP 503](https://peps.python.org/pep-0503/)-compatible mirror.
+To specify a mirror, you can either define `plugins.pypi_mirror.url` in poetry's
+[configuration](https://python-poetry.org/docs/configuration/), or set
+environment variable `POETRY_PYPI_MIRROR_URL` to the full URL for a [PEP
+503](https://peps.python.org/pep-0503/)-compatible mirror. When both are set the
+environment variable will be used.
 
-For example:
+#### Poetry config example
+
+```toml
+[plugins]
+[plugins.pypi_mirror]
+url = "https://example.org/repository/pypi-proxy/simple/"
+```
+
+... in [either](https://python-poetry.org/docs/configuration/) a project's
+`poetry.toml` (for per-project configuration), or the user's `config.toml`.
+
+#### Environment variable example
 
 ```shell
 POETRY_PYPI_MIRROR_URL=https://example.org/repository/pypi-proxy/simple/ poetry add pendulum
