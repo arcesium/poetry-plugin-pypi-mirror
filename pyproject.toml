@@ -5,6 +5,9 @@ description = "Poetry plugin that adds support for pypi.org mirrors and pull-thr
 authors = ["Jacob Henner <code@ventricle.us>"]
 license = "BSD-3-Clause"
 keywords = ["packaging", "poetry", "pypi"]
+readme = "README.md"
+homepage = "https://github.com/arcesium/poetry-plugin-pypi-mirror"
+repository = "https://github.com/arcesium/poetry-plugin-pypi-mirror"
 
 [tool.poetry.dependencies]
 python = "^3.7"
