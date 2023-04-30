@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "poetry-plugin-pypi-mirror"
-version = "0.3.0"
+version = "0.3.1"
 description = "Poetry plugin that adds support for pypi.org mirrors and pull-through caches"
 authors = ["Jacob Henner <code@ventricle.us>"]
 license = "BSD-3-Clause"
