@@ -11,7 +11,7 @@ repository = "https://github.com/arcesium/poetry-plugin-pypi-mirror"
 
 [tool.poetry.dependencies]
 python = "^3.7"
-poetry = ">= 1.3, < 1.5"
+poetry = ">= 1.3, < 1.6"
 
 [tool.poetry.plugins."poetry.plugin"]
 demo = "poetry_plugin_pypi_mirror.plugins:PyPIMirrorPlugin"
