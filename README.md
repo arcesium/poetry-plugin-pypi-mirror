@@ -62,6 +62,16 @@ poetry add cleo # uses mirror specified in first line
 poetry lock     # also uses mirror specified in first line
 ```
 
+
+#### Authentication
+
+If the mirror you're using requires authentication you can add the credentials
+like you would for any other repository.
+
+```shell
+poetry config http-basic.PyPI <username> <password/token>
+```
+
 ## Compatibility
 
 *poetry-plugin-pypi-mirror* depends on poetry internals which can change between
