@@ -34,18 +34,19 @@ class PyPIMirrorPlugin(Plugin):
         if not pypi_mirror_url:
             return
 
-        # If the PyPI Mirror requires authentication the package indexing is
-        # handled via the SourceStrippedLegacyRepository class we're creating
-        # below.
-        # The installation on the other hand is performed by the Installer
-        # class, which creates its own Authenticator, which in turn does not use
-        # the hijacked repository configuration, which results in an error 401.
+        # If the PyPI Mirror requires authentication, the dependency resolving
+        # process is handled by the Repository class we create. However,
+        # dependency installation is performed by the Installer class, which
+        # creates its own Authenticator.
         #
-        # Because the Authenticator uses the configuration to build the list of
-        # configured repositories we can insert our URL into the config.
-        # The Authenticator then will use Keyring to read the credentials as it
-        # would with any other repository.
-        poetry.config.merge({"repositories": {DEFAULT_REPO_NAME: {"url": pypi_mirror_url}}})
+        # Because the Authenticator uses poetry's configuration to determine the
+        # authentication settings for each repository, we must modify poetry's
+        # config to include the PyPI mirror's URL. The Authenticator then will
+        # use Keyring to read the credentials for that repository/URL as it
+        # would with any other.
+        poetry.config.merge(
+            {"repositories": {DEFAULT_REPO_NAME: {"url": pypi_mirror_url}}}
+        )
 
         # All keys are lowercased in public functions
         repo_key = DEFAULT_REPO_NAME.lower()

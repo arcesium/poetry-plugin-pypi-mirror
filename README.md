@@ -65,11 +65,11 @@ poetry lock     # also uses mirror specified in first line
 
 #### Authentication
 
-If the mirror you're using requires authentication you can add the credentials
+If the mirror you're using requires authentication, you can add the credentials
 like you would for any other repository.
 
-Please note that Poetry's config is case-sensitive, so it is important that you
-configure the credentials for `PyPI`, `pypi` or any other variation will not
+Please note that repository names are case-sensitive, so it is important that
+you configure the credentials for `PyPI`. `pypi` or other variations will not
 work.
 
 ```shell
