@@ -34,6 +34,20 @@ class PyPIMirrorPlugin(Plugin):
         if not pypi_mirror_url:
             return
 
+        # If the PyPI Mirror requires authentication, the dependency resolving
+        # process is handled by the Repository class we create. However,
+        # dependency installation is performed by the Installer class, which
+        # creates its own Authenticator.
+        #
+        # Because the Authenticator uses poetry's configuration to determine the
+        # authentication settings for each repository, we must modify poetry's
+        # config to include the PyPI mirror's URL. The Authenticator then will
+        # use Keyring to read the credentials for that repository/URL as it
+        # would with any other.
+        poetry.config.merge(
+            {"repositories": {DEFAULT_REPO_NAME: {"url": pypi_mirror_url}}}
+        )
+
         # All keys are lowercased in public functions
         repo_key = DEFAULT_REPO_NAME.lower()
 
