@@ -84,7 +84,7 @@ version in use and the plugin version in use.
 
 | Poetry version(s) | Compatible plugin version(s) |
 |-------------------|------------------------------|
-| >= 1.3, < 1.8     | ^0.4.1                       |
+| >= 1.3            | ^0.4.1                       |
 | ~1.2.1            | < 0.3.0                      |
 
 ## Contributing
