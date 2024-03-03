@@ -54,6 +54,7 @@ url = "https://example.org/repository/pypi-proxy/simple/"
 ```shell
 POETRY_PYPI_MIRROR_URL=https://example.org/repository/pypi-proxy/simple/ poetry add pendulum
 ```
+
 ...or...
 
 ```shell
@@ -61,7 +62,6 @@ export POETRY_PYPI_MIRROR_URL=https://example.org/repository/pypi-proxy/simple/
 poetry add cleo # uses mirror specified in first line
 poetry lock     # also uses mirror specified in first line
 ```
-
 
 #### Authentication
 
@@ -84,7 +84,7 @@ version in use and the plugin version in use.
 
 | Poetry version(s) | Compatible plugin version(s) |
 |-------------------|------------------------------|
-| >= 1.3, < 1.8     | ^0.4.1                       |
+| >= 1.3, < 1.9     | ^0.4.2                       |
 | ~1.2.1            | < 0.3.0                      |
 
 ## Contributing
