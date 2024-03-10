@@ -42,8 +42,14 @@ environment variable will be used.
 
 ```toml
 [plugins]
-[plugins.pypi_mirror]
+[plugins.pypi_mirror.simple]
 url = "https://example.org/repository/pypi-proxy/simple/"
+
+[plugins.pypi_mirror.pypi_example]
+url = "https://pypi.example.org/simple/"
+
+[plugins.pypi_mirror.enterprise]
+url = "https://me:P4S5w0Rd@myenterprise.com/pypi/simple/"
 ```
 
 ... in [either](https://python-poetry.org/docs/configuration/) a project's
