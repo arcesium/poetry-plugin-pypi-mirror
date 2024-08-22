@@ -28,7 +28,7 @@ they want to contribute their changes back to the project. This is suboptimal.
 
 ### Installation
 
-Follow poetry's [plugin installation instructions](https://python-poetry.org/docs/master/plugins/#using-plugins), replacing `poetry-plugin` with `poetry-plugin-pypi-mirror`.
+Follow poetry's [plugin installation instructions](https://python-poetry.org/docs/plugins/#using-plugins), replacing `poetry-plugin` with `poetry-plugin-pypi-mirror`.
 
 ### Specifying a mirror
 
