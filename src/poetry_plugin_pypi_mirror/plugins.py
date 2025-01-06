@@ -80,10 +80,16 @@ class SourceStrippedLegacyRepository(LegacyRepository):
         self,
         name: str,
         url: str,
+        *,
         config: Config | None = None,
         disable_cache: bool = False,
     ) -> None:
-        super().__init__(name, url, config, disable_cache)
+        super().__init__(
+            name,
+            url.rstrip("/"),
+            config=config,
+            disable_cache=disable_cache,
+        )
 
     # Packages sourced from PyPiRepository repositories *do not* include their
     # source data in poetry.lock. This is unique to PyPiRepository. Packages
