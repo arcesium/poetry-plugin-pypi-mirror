@@ -10,7 +10,6 @@ from poetry.plugins.plugin import Plugin
 from poetry.poetry import Poetry
 from poetry.repositories.legacy_repository import LegacyRepository
 from poetry.repositories.pypi_repository import PyPiRepository
-from poetry.repositories.repository_pool import Priority
 
 # Hopefully the default repo name never changes. It'd be nice if this value was
 # exposed in poetry as a constant.
@@ -65,10 +64,12 @@ class PyPIMirrorPlugin(Plugin):
             disable_cache=pypi_prioritized_repository.repository._disable_cache,
         )
 
+        priority = pypi_prioritized_repository.priority
+
         poetry.pool.remove_repository(DEFAULT_REPO_NAME)
         poetry.pool.add_repository(
             repository=replacement_repository,
-            priority=Priority.PRIMARY,
+            priority=priority,
         )
 
 
