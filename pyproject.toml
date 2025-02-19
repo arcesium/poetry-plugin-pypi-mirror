@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "poetry-plugin-pypi-mirror"
-version = "0.5.0"
+version = "0.6.0"
 description = "Poetry plugin that adds support for pypi.org mirrors and pull-through caches"
 authors = ["Jacob Henner <code@ventricle.us>"]
 license = "BSD-3-Clause"
@@ -11,7 +11,7 @@ repository = "https://github.com/arcesium/poetry-plugin-pypi-mirror"
 
 [tool.poetry.dependencies]
 python = "^3.9.0"
-poetry = ">= 2.0, < 2.1"
+poetry = ">= 2.0, < 2.2"
 
 [tool.poetry.plugins."poetry.plugin"]
 pypi_mirror = "poetry_plugin_pypi_mirror.plugins:PyPIMirrorPlugin"
