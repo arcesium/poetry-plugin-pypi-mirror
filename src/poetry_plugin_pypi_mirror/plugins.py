@@ -96,14 +96,12 @@ class SourceStrippedLegacyRepository(LegacyRepository):
     # To work around this, we extend LegacyRepository. The extended version
     # drops source URL information from packages attributed to the repository,
     # preventing that source information from being included in the lockfile.
-    def package(
-        self, name: str, version: Version, extras: list[str] | None = None
-    ) -> Package:
+    def package(self, name: str, version: Version) -> Package:
         try:
             index = self._packages.index(Package(name, version))
             package = self._packages[index]
         except ValueError:
-            package = super().package(name, version, extras)
+            package = super().package(name, version)
         # It is a bit uncomfortable for this plugin to be modifying an internal
         # attribute of the package object. That said, the parent class does the
         # same thing (although it's not released independently like this plugin
