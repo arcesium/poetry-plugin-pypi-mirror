@@ -1,28 +1,31 @@
-[tool.poetry]
+[project]
 name = "poetry-plugin-pypi-mirror"
 version = "0.6.1"
 description = "Poetry plugin that adds support for pypi.org mirrors and pull-through caches"
-authors = ["Jacob Henner <code@ventricle.us>"]
-license = "BSD-3-Clause"
+authors = [{name="Jacob Henner", email="code@ventricle.us"}]
+license = {text="BSD-3-Clause"}
 keywords = ["packaging", "poetry", "pypi"]
 readme = "README.md"
+requires-python = ">=3.9"
+dependencies = ["poetry (>=2.1,<2.2)"]
+
+[project.urls]
 homepage = "https://github.com/arcesium/poetry-plugin-pypi-mirror"
 repository = "https://github.com/arcesium/poetry-plugin-pypi-mirror"
 
 [tool.poetry.dependencies]
 python = "^3.9.0"
-poetry = ">= 2.1, < 2.2"
 
-[tool.poetry.plugins."poetry.plugin"]
+[project.entry-points."poetry.plugin"]
 pypi_mirror = "poetry_plugin_pypi_mirror.plugins:PyPIMirrorPlugin"
 
 [tool.poetry.group.dev.dependencies]
-black = "^23.7.0"
-mypy = "^1.5.1"
-bandit = "^1.7.5"
-isort = "^5.12.0"
-pre-commit = "^3.4.0"
-flake8 = "^6.1.0"
+black = "^25.1.0"
+mypy = "^1.15.0"
+bandit = "^1.8.3"
+isort = "^6.0.1"
+pre-commit = "^4.2.0"
+flake8 = "^7.2.0"
 
 [tool.isort]
 profile = "black"
@@ -35,12 +38,6 @@ disable = "C0330, C0326"
 [tool.pylint.format]
 max-line-length = "88"
 
-[[tool.mypy.overrides]]
-module = [
-  'cleo.*',
-]
-ignore_missing_imports = true
-
 [build-system]
-requires = ["poetry-core>=1.0.0"]
+requires = ["poetry-core>=2.0.0"]
 build-backend = "poetry.core.masonry.api"
