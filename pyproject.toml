@@ -11,18 +11,18 @@ repository = "https://github.com/arcesium/poetry-plugin-pypi-mirror"
 
 [tool.poetry.dependencies]
 python = "^3.9.0"
-poetry = ">= 2.1, < 2.2"
+poetry = ">= 2.1, < 2.3"
 
 [tool.poetry.plugins."poetry.plugin"]
 pypi_mirror = "poetry_plugin_pypi_mirror.plugins:PyPIMirrorPlugin"
 
 [tool.poetry.group.dev.dependencies]
-black = "^23.7.0"
-mypy = "^1.5.1"
-bandit = "^1.7.5"
-isort = "^5.12.0"
-pre-commit = "^3.4.0"
-flake8 = "^6.1.0"
+black = "^25.1.0"
+mypy = "^1.18.1"
+bandit = "^1.8.6"
+isort = "^6.0.1"
+pre-commit = "^4.3.0"
+flake8 = "^7.3.0"
 
 [tool.isort]
 profile = "black"
